@@ -13,7 +13,7 @@
             </p>
 =======
                 Dan needs to Listent to Rachel MORE!!!</p>
->>>>>>> 03ecbbd9f8841f2e1b230ad15e76530e362cc43a
+>>>>>>> This is where Dan laughs maniacally, cause he never listens.
         </div>
     </section>
 </asp:Content>
