@@ -7,7 +7,13 @@
                 <h1><%: Title %>.</h1>
             </hgroup>
             <p>
-                Dan needs to Listent to Rachel MORE!!!</p>
+<<<<<<< HEAD
+                
+                <a href="http://forums.asp.net/18.aspx" title="ASP.NET Forum">our forums</a>.
+            </p>
+=======
+                !</p>
+>>>>>>> This is where Dan laughs maniacally, cause he never listens.
         </div>
     </section>
 </asp:Content>
