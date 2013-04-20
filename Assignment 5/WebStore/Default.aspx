@@ -7,9 +7,13 @@
                 <h1><%: Title %>.</h1>
             </hgroup>
             <p>
+<<<<<<< HEAD
                 
                 <a href="http://forums.asp.net/18.aspx" title="ASP.NET Forum">our forums</a>.
             </p>
+=======
+                Dan needs to Listent to Rachel MORE!!!</p>
+>>>>>>> 03ecbbd9f8841f2e1b230ad15e76530e362cc43a
         </div>
     </section>
 </asp:Content>
