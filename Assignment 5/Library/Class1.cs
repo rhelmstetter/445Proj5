@@ -20,7 +20,7 @@ namespace Library
     public class Cat : Pet
     {
         string color;
-        string breek;
+        string breed;
     }
 
     public class Bird : Pet
