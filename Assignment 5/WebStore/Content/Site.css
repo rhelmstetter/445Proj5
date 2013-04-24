@@ -577,6 +577,7 @@ tr.pager td {
 
     /* logo */
     header .site-title {
+        background: url("../Images/Puffer_Fish.png") no-repeat;
         margin: 10px;
         text-align: center;
     }
