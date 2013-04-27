@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Collections;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -23,11 +24,14 @@ public partial class admin : System.Web.UI.Page
                 XmlDocument xd = new XmlDocument();
                 xd.Load(fs);
                 fs.Close();
-                XmlNode node = xd.LastChild;
-                XmlNodeList children = node.ChildNodes;
-                foreach(XmlNode child in children)
+                List<Library.Pet> pets = Library.petDAO.listPets();
+                //XmlNode node = xd.LastChild;
+                //XmlNodeList children = node.ChildNodes;
+                foreach(Library.Pet inv in pets)
                 {
-                    petBox.Items.Add(child.InnerText);
+                   // petBox.Items.Add(child.InnerText);
+                   string desc = inv.id;
+                   petBox.Items.Add(
                 }
             }
         }

@@ -8,6 +8,8 @@ namespace Library
 {
     public class Pet
     {
+        string petType;
+        string id;
         int age;
         double price;
         string description;
