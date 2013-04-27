@@ -13,7 +13,7 @@ namespace Library
     {
         string petType;
         string id;
-        string age;
+        int age;
         double price;
         string description;
 
