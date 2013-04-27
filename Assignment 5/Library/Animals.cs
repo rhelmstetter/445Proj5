@@ -72,6 +72,8 @@ namespace Library
 
     public class PetDao
     {
+        public PetDao() { }
+
         public void addPet(Pet newPet) 
         {
         
@@ -89,7 +91,8 @@ namespace Library
 
             try
             {
-                reader = new XmlTextReader("~/Listing.xml");
+                string path = "c:\\Listing.xml";
+                reader = new XmlTextReader(path);
                 reader.WhitespaceHandling = WhitespaceHandling.None;
                 reader.Read();
                 while (reader.Name != "Type")

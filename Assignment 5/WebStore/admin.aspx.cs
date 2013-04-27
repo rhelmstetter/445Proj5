@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
+using Library;
 
 public partial class admin : System.Web.UI.Page
 {
@@ -19,16 +20,18 @@ public partial class admin : System.Web.UI.Page
         //string current = petBox.SelectedValue;
         //string[] info = current.Split(' ');
         //Library.PetDao.deletePet(info[0]);
-        //refreshList();
+        refreshList();
     }
 
     protected void refreshList()
     {
-        List<Library.Pet> pets = Library.PetDao.listPets();
 
+        Library.PetDao stuff;
+        stuff = new Library.PetDao();
+        List<Library.Pet> pets = stuff.listPets();
+        petBox.Items.Add(pets.Capacity.ToString());
         foreach (Library.Pet inv in pets)
         {
-            int type = 0;
             string info = "";
             // petBox.Items.Add(child.InnerText);
             if (inv.getPetType() == "Dog")
