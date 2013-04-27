@@ -11,7 +11,7 @@
 &nbsp;<asp:ListBox ID="petBox" runat="server" Height="179px" Width="374px"></asp:ListBox>
         <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="Button1" runat="server" Text="Delete Pet" Width="145px" />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Delete Pet" Width="145px" />
         <br />
         <br />
         Add a new pet to be listed:<br />
