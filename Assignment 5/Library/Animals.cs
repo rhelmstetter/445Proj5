@@ -10,6 +10,7 @@ namespace Library
     {
         int age;
         double price;
+        string description;
     }
 
     public class Dog : Pet
@@ -26,5 +27,6 @@ namespace Library
     public class Bird : Pet
     {
         string type;
+        double weight;
     }
 }
