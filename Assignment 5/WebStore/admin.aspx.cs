@@ -32,15 +32,24 @@ public partial class admin : System.Web.UI.Page
                     int type = 0;
                     string info = "";
                     // petBox.Items.Add(child.InnerText);
-                    if(inv.getType() == "Dog")
-                        info = inv.getId() + ": " + inv.getPetType + ": "
-                            + (Library.Dog)inv.getBreed();
-                    else if(inv.GetType() == "Cat")
-                        info = inv.getId() + ": " + inv.getPetType + ": "
-                            +(Library.Cat)inv.getBreed();
-                    else if(inv.GetType() == "Bird")
-                        info = inv.getId() + ": " + inv.getPetType + ": "
-                            +(Library.Bird)inv.getType();
+                    if (inv.getPetType() == "Dog")
+                    {
+                        Library.Dog newDog = (Library.Dog)inv;
+                        info = newDog.getId() + ": " + newDog.getPetType() + ": "
+                            + newDog.getBreed();
+                    }
+                    else if (inv.getPetType() == "Cat")
+                    {
+                        Library.Cat newCat = (Library.Cat)inv;
+                        info = newCat.getId() + ": " + newCat.getPetType() + ": "
+                            + newCat.getBreed();
+                    }
+                    else if (inv.getPetType() == "Bird")
+                    {
+                        Library.Bird newBird = (Library.Bird)inv;
+                        info = newBird.getId() + ": " + newBird.getPetType() + ": "
+                            + newBird.getType();
+                    }
 
                     petBox.Items.Add(info);
                 }
