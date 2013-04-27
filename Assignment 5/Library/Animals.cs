@@ -82,6 +82,11 @@ namespace Library
 
         }
 
+        public Pet getPet(string id)
+        {
+            return new Pet();
+        }
+
         public List<Pet> listPets()
         {
             XmlTextReader reader = null;
@@ -89,7 +94,7 @@ namespace Library
 
             try
             {
-                reader = new XmlTextReader("~/Listing.xml");
+                reader = new XmlTextReader("Listing.xml");
                 reader.WhitespaceHandling = WhitespaceHandling.None;
                 reader.Read();
                 while (reader.Name != "Type")

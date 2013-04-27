@@ -7,11 +7,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
+using Library;
 
 public partial class admin : System.Web.UI.Page
 {
+    PetDao dao = new PetDao();
+    
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        List<Pet> list = dao.listPets();
+        
         string xmlLoc = Path.Combine(Request.PhysicalApplicationPath, 
             @"Listing.xml");
         FileStream fs = null;
