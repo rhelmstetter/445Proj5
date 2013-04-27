@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
-
+<%@ Register TagPrefix="cse" TagName="user" Src="~/CurrentUser.ascx" %>
 <!DOCTYPE html>
 <html lang="en">
 <head runat="server">
@@ -44,7 +44,9 @@
                 <section id="login">
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
+
                             <ul>
+                                <li><cse:user ID="User1" runat="server" /></li>
                                 <li><a id="registerLink" runat="server" href="~/Account/Register.aspx">Register</a></li>
                                 <li><a id="loginLink" runat="server" href="~/Account/Login.aspx">Log in</a></li>
                             </ul>
