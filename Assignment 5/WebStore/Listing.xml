@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<List>
+  <Pet>
+    <Type>
+      Dog
+      <Breed>
+        Mixed
+      </Breed>
+    </Type>
+    <Age>
+      2
+    </Age>
+    <Price>
+      100.00
+    </Price>
+    <Description>
+      Ugly mutt; can't wait to get rid of.
+    </Description>
+  </Pet>
+</List>
