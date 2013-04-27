@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.IO;
 using System.Web;
+using System.Diagnostics;
 
 namespace Library
 {
@@ -25,7 +26,8 @@ namespace Library
         public int getAge() { return age; }
         public void setPrice(double price) { this.price = price; }
         public double getPrice() { return price; }
-
+        public string getDescription() { return description; }
+        public void setDescription(string descr) { description = descr; }
 
     }
 
@@ -89,16 +91,116 @@ namespace Library
             {
                 reader = new XmlTextReader("~/Listing.xml");
                 reader.WhitespaceHandling = WhitespaceHandling.None;
-                while (true)
+                reader.Read();
+                while (reader.Name != "Type")
                 {
-                    
+                    reader.Read();
                 }
+
+                do
+                {
+                    string petType = reader.Value;
+                    string breed;
+                    string color;
+                    double weight;
+                    string type;
+                    string id;
+                    int age;
+                    double price;
+                    string descr;
+                    switch (petType)
+                    {
+                        case "Dog":
+                            reader.Read();
+                            breed = reader.Value;
+                            reader.Read();
+                            color = reader.Value;
+                            reader.Read();
+                            id = reader.Value;
+                            reader.Read();
+                            age = Convert.ToInt32(reader.Value);
+                            reader.Read();
+                            price = Convert.ToDouble(reader.Value);
+                            reader.Read();
+                            descr = reader.Value;
+
+                            Dog dog = new Dog();
+                            dog.setPetType(petType);
+                            dog.setId(id);
+                            dog.setAge(age);
+                            dog.setColor(color);
+                            dog.setPrice(price);
+                            dog.setDescription(descr);
+
+                            petList.Add(dog);
+                            break;
+                        case "Cat":
+                            reader.Read();
+                            breed = reader.Value;
+                            reader.Read();
+                            color = reader.Value;
+                            reader.Read();
+                            id = reader.Value;
+                            reader.Read();
+                            age = Convert.ToInt32(reader.Value);
+                            reader.Read();
+                            price = Convert.ToDouble(reader.Value);
+                            reader.Read();
+                            descr = reader.Value;
+
+                            Cat cat = new Cat();
+                            cat.setPetType(petType);
+                            cat.setId(id);
+                            cat.setAge(age);
+                            cat.setColor(color);
+                            cat.setPrice(price);
+                            cat.setDescription(descr);
+
+                            petList.Add(cat);
+
+                            break;
+                        case "Bird":
+                            reader.Read();
+                            type = reader.Value;
+                            reader.Read();
+                            weight = Convert.ToDouble(reader.Value);
+                            reader.Read();
+                            id = reader.Value;
+                            reader.Read();
+                            age = Convert.ToInt32(reader.Value);
+                            reader.Read();
+                            price = Convert.ToDouble(reader.Value);
+                            reader.Read();
+                            descr = reader.Value;
+
+                            Bird bird = new Bird();
+                            bird.setPetType(petType);
+                            bird.setId(id);
+                            bird.setAge(age);
+                            bird.setWeight(weight);
+                            bird.setPrice(price);
+                            bird.setDescription(descr);
+
+                            petList.Add(bird);
+
+
+                            break;
+                        default:
+                            Debug.WriteLine("ERROR");
+
+                            break;
+                    }
+
+
+                } while (reader.Read());
 
             }
             finally
             {
                 reader.Close();
             }
+
+            return petList;
         }
     }
 
