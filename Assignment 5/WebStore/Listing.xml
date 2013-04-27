@@ -17,4 +17,21 @@
       Ugly mutt; can't wait to get rid of.
     </Description>
   </Pet>
+  <Pet>
+    <Type>
+      Bird
+      <Breed>
+        Crocodile
+      </Breed>
+    </Type>
+    <Age>
+      14
+    </Age>
+    <Price>
+      1000.00
+    </Price>
+    <Description>
+      May bite.
+    </Description>
+  </Pet>
 </List>
