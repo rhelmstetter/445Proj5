@@ -38,7 +38,7 @@
         <div class="content-wrapper">
             <div class="float-left">
                 <p class="site-title">
-                    <a runat="server" href="~/">your logo here</a></p>
+                    <a href="~/">Narwhals R </a>Us!</p>
             </div>
             <div class="float-right">
                 <section id="login">

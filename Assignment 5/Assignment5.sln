@@ -5,6 +5,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebStore", "http://localhos
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{6a25ab29-9f9a-446d-b19c-2570c84d26af}|Library.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_50684"
 		Debug.AspNetCompiler.PhysicalPath = "WebStore\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50684\"
