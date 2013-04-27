@@ -391,7 +391,14 @@ fieldset {
         }
 
     label {
-        display: b
+        display: block;
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+
+    label.checkbox {
+        display: inline;
+    }
 
     input, textarea {
         border: 1px solid #e2e2e2;
@@ -402,13 +409,6 @@ fieldset {
         padding: 5px;
         }
 
-    #333;
-        font-size: 1.2em;
-        margin: 5px 0 6px 0;
-        padding: 5px;
-        width: 300px;
-    }
-
     textarea {
         font-family: inherit;
         width: 500px;
@@ -418,7 +418,11 @@ fieldset {
             border: 1px solid #7ac0da;
         }
 
-        input[
+        input[type="checkbox"] {
+            background: transparent;
+            border: inherit;
+            width: auto;
+        }
         
     input[type="submit"],
     input[type="button"],
@@ -431,13 +435,6 @@ fieldset {
         padding: 7px;
         margin-right: 8px;
         }
-
-    : 1.2em;
-        font-weight: 600;
-        padding: 7px;
-        margin-right: 8px;
-        width: auto;
-    }
 
     td input[type="submit"],
     td input[type="button"],
@@ -492,18 +489,17 @@ input[type="checkbox"].input-validation-error {
 }
 
 .validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 1.1em;
+}
 
+.validation-summary-valid {
+    display: none;
+}
 
 /* tables
 ----------------------------------------------------------*/
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin-top: 0.75em;
-    border: 0 none;
-}
-
----*/
 table {
     border-collapse: collapse;
     border-spacing: 0;
