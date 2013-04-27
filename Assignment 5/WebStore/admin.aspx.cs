@@ -29,9 +29,20 @@ public partial class admin : System.Web.UI.Page
                 //XmlNodeList children = node.ChildNodes;
                 foreach(Library.Pet inv in pets)
                 {
-                   // petBox.Items.Add(child.InnerText);
-                   string desc = inv.id;
-                   petBox.Items.Add(
+                    int type = 0;
+                    string info = "";
+                    // petBox.Items.Add(child.InnerText);
+                    if(inv.getType() == "Dog")
+                        info = inv.getId() + ": " + inv.getPetType + ": "
+                            + (Library.Dog)inv.getBreed();
+                    else if(inv.GetType() == "Cat")
+                        info = inv.getId() + ": " + inv.getPetType + ": "
+                            +(Library.Cat)inv.getBreed();
+                    else if(inv.GetType() == "Bird")
+                        info = inv.getId() + ": " + inv.getPetType + ": "
+                            +(Library.Bird)inv.getType();
+
+                    petBox.Items.Add(info);
                 }
             }
         }

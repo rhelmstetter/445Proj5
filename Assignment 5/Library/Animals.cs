@@ -12,11 +12,7 @@ namespace Library
     public class Pet
     {
         string petType;
-<<<<<<< HEAD
         string id;
-=======
-        int id;
->>>>>>> 4a005dfcf5980667067a83dd80d796c1744352ad
         int age;
         double price;
         string description;
