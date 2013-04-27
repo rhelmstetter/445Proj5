@@ -12,15 +12,15 @@ namespace Library
     public class Pet
     {
         string petType;
-        int id;
-        int age;
+        string id;
+        string age;
         double price;
         string description;
 
         public void setPetType(string type) { this.petType = type; }
         public string getPetType() { return petType; }
-        public void setId(int id) { this.id = id; }
-        public int getId() { return id; }
+        public void setId(string id) { this.id = id; }
+        public string getId() { return id; }
         public void setAge(int age) { this.age = age; }
         public int getAge() { return age; }
         public void setPrice(double price) { this.price = price; }
@@ -89,6 +89,10 @@ namespace Library
             {
                 reader = new XmlTextReader("~/Listing.xml");
                 reader.WhitespaceHandling = WhitespaceHandling.None;
+                while (true)
+                {
+                    
+                }
 
             }
             finally
