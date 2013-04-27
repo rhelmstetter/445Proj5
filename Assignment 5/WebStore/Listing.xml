@@ -6,7 +6,13 @@
       <Breed>
         Mixed
       </Breed>
+      <Color>
+        Brown
+      </Color>
     </Type>
+    <Id>
+      fluffy
+    </Id>
     <Age>
       2
     </Age>
@@ -23,7 +29,13 @@
       <Breed>
         Crocodile
       </Breed>
+      <Weight>
+        400.7
+      </Weight>
     </Type>
+    <Id>
+      croc123
+    </Id>
     <Age>
       14
     </Age>
