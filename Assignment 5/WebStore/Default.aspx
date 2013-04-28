@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="RumbleFish Online Store for Dead Animals!!!" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
+<%@ Register TagPrefix="cse" TagName="user" Src="~/PetCountControl.ascx" %>
+
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
     <section class="featured">
         <div class="content-wrapper">
@@ -12,7 +14,10 @@
 </asp:Content>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <center><h3>We have Dogs, Cats, and Birds for sale. To purchase one, please make sure you are logged in, then select a pet and click &#39;Purchase&#39; at the bottom of the page.</h3></center>
+    <center><h3>We have 
+            <cse:user ID="User1" runat="server" />
+        
+        Dogs, Cats, and Birds for sale. To purchase one, please make sure you are logged in, then select a pet and click &#39;Purchase&#39; at the bottom of the page.</h3></center>
     <ol class="round">
         <li class="one">
             <h5>Dogs</h5>
