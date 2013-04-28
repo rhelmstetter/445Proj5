@@ -86,9 +86,32 @@ namespace Library
         
         }
 
-        public void deletePet(Pet pet) 
+        public void deletePet(string petID)
         {
-
+            int del = -1;
+            string path = "c:\\Listing.txt";
+            string[] lines = System.IO.File.ReadAllLines(path);
+            for (int x = 0; x < lines.Count(); x++)
+            {
+                string[] ind = lines[x].Split('\t');
+                if (ind.Count() > 3)
+                {
+                    Debug.WriteLine(petID + "  " + ind[3]);
+                    if (petID == ind[3])
+                    {
+                        del = x;
+                        break;
+                    }
+                }
+            }
+            System.IO.StreamWriter output = new System.IO.StreamWriter(@"C:\\Listing.txt");
+            string[] newLines = new string[lines.Count() - 1];
+            for (int x = 0; x < lines.Count(); x++)
+            {
+                if (x != del)
+                    output.WriteLine(lines[x]);
+            }
+            output.Close();
         }
 
         public Pet getPet(string id)
