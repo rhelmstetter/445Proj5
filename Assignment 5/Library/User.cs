@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Library
 {
-    class User
+    public class User
     {
         int admin;  // 0 = False, 1 = True
         String username;
@@ -22,7 +22,8 @@ namespace Library
         }
         public User(int admin, string user, string pass)
         {
-            CryptoService.ServiceClient proxy = new CryptoService.ServiceClient();
+
+            CryptoService.Service proxy = new CryptoService.Service();
             try
             {
                 this.admin = admin;
@@ -34,10 +35,6 @@ namespace Library
                 Debug.WriteLine(e.Message);
                 
             }
-            finally
-            {
-                proxy.Close();
-            }
         }
 
         public int getAdmin() { return admin; }
@@ -46,7 +43,7 @@ namespace Library
         public string getPassword() { return password; }
         public void setPassword(string pass) 
         {
-            CryptoService.ServiceClient proxy = new CryptoService.ServiceClient();
+            CryptoService.Service proxy = new CryptoService.Service();
             try
             {
                 password = proxy.Encrypt(pass);
@@ -56,10 +53,6 @@ namespace Library
                 Debug.WriteLine(e.Message);
     
             }
-            finally
-            {
-                proxy.Close();
-            }
         }
 
         public string toString()
@@ -68,11 +61,13 @@ namespace Library
         }
     }
 
-    class UserDao
+    public class UserDao
     {
+       
+
         public void addUser(User newUser)
         {
-            string path = "http:\\\\webstrar.fulton.asu.edu\\website9\\Page0\\Page00\\Users.txt";
+            string path = "C:\\Users.txt";
             // Load all users
             try
             {
@@ -95,7 +90,7 @@ namespace Library
                 return null;
             }
 
-            CryptoService.ServiceClient proxy = new CryptoService.ServiceClient();
+            CryptoService.Service proxy = new CryptoService.Service();
 
             try
             {
@@ -113,17 +108,13 @@ namespace Library
                 Debug.WriteLine(e.Message);
                 return null;
             }
-            finally
-            {
-                proxy.Close();
-            }
 
 
         }
 
         public User getUser(string username)
         {
-            string path = "http:\\\\webstrar.fulton.asu.edu\\website9\\Page0\\Page00\\Users.txt";
+            string path = "C:\\Users.txt";
 
             try
             {
