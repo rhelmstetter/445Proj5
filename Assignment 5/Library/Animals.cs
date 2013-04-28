@@ -93,7 +93,8 @@ namespace Library
         {
             List<Pet> petList = new List<Pet>();
 
-            string path = "//webstrar9.fulton.asu.edu/page0/page00/Listing.txt";
+            string path = "C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/Listing.txt";
+            //string path = "//webstrar9.fulton.asu.edu/page0/page00/Listing.txt";
             
             string[] lines = System.IO.File.ReadAllLines(path);
             for (int x = 0; x < lines.Count(); x++)
