@@ -22,13 +22,14 @@ public partial class confirmation : System.Web.UI.Page
             
         if (String.IsNullOrEmpty(s))
         {
-            int x;
-            x = 5;
+            Response.Redirect("default.aspx");
         }
 
         else
         {
             petToBuy = pet_dao.StringToObject(s);
+            //pet_dao.deletePet(petToBuy.getId());
+            lblPetBough.Text = petToBuy.getId();
         }
     }
 

@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" Runat="Server">
     <h1> CONGRATULATIONS </h1>
     <h3> On the purchase of your new feathery or furry friend!<br />
-         You Bought: </h3>
+         You Bought:  <asp:Label ID="lblPetBough" runat="server" Text="Label"></asp:Label> </h3> <br />
 
 
 
