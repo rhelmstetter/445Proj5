@@ -84,6 +84,11 @@ namespace Library
 
         }
 
+        public Pet getPet(string id)
+        {
+            return new Pet();
+        }
+
         public List<Pet> listPets()
         {
             XmlTextReader reader = null;
@@ -94,108 +99,105 @@ namespace Library
                 string path = "c:\\Listing.xml";
                 reader = new XmlTextReader(path);
                 reader.WhitespaceHandling = WhitespaceHandling.None;
-                reader.Read();
-                while (reader.Name != "Type")
+               
+                while(reader.Read())
                 {
-                    reader.Read();
-                }
-
-                do
-                {
-                    string petType = reader.Value;
-                    string breed;
-                    string color;
-                    double weight;
-                    string type;
-                    string id;
-                    int age;
-                    double price;
-                    string descr;
-                    switch (petType)
+                    if (reader.Name == "Type")
                     {
-                        case "Dog":
-                            reader.Read();
-                            breed = reader.Value;
-                            reader.Read();
-                            color = reader.Value;
-                            reader.Read();
-                            id = reader.Value;
-                            reader.Read();
-                            age = Convert.ToInt32(reader.Value);
-                            reader.Read();
-                            price = Convert.ToDouble(reader.Value);
-                            reader.Read();
-                            descr = reader.Value;
+                        string petType = reader.Value;
+                        string breed;
+                        string color;
+                        double weight;
+                        string type;
+                        string id;
+                        int age;
+                        double price;
+                        string descr;
+                        switch (petType)
+                        {
+                            case "Dog":
+                                reader.Read();
+                                breed = reader.Value;
+                                reader.Read();
+                                color = reader.Value;
+                                reader.Read();
+                                id = reader.Value;
+                                reader.Read();
+                                age = Convert.ToInt32(reader.Value);
+                                reader.Read();
+                                price = Convert.ToDouble(reader.Value);
+                                reader.Read();
+                                descr = reader.Value;
 
-                            Dog dog = new Dog();
-                            dog.setPetType(petType);
-                            dog.setId(id);
-                            dog.setAge(age);
-                            dog.setColor(color);
-                            dog.setPrice(price);
-                            dog.setDescription(descr);
+                                Dog dog = new Dog();
+                                dog.setPetType(petType);
+                                dog.setId(id);
+                                dog.setAge(age);
+                                dog.setColor(color);
+                                dog.setPrice(price);
+                                dog.setDescription(descr);
 
-                            petList.Add(dog);
-                            break;
-                        case "Cat":
-                            reader.Read();
-                            breed = reader.Value;
-                            reader.Read();
-                            color = reader.Value;
-                            reader.Read();
-                            id = reader.Value;
-                            reader.Read();
-                            age = Convert.ToInt32(reader.Value);
-                            reader.Read();
-                            price = Convert.ToDouble(reader.Value);
-                            reader.Read();
-                            descr = reader.Value;
+                                petList.Add(dog);
+                                break;
+                            case "Cat":
+                                reader.Read();
+                                breed = reader.Value;
+                                reader.Read();
+                                color = reader.Value;
+                                reader.Read();
+                                id = reader.Value;
+                                reader.Read();
+                                age = Convert.ToInt32(reader.Value);
+                                reader.Read();
+                                price = Convert.ToDouble(reader.Value);
+                                reader.Read();
+                                descr = reader.Value;
 
-                            Cat cat = new Cat();
-                            cat.setPetType(petType);
-                            cat.setId(id);
-                            cat.setAge(age);
-                            cat.setColor(color);
-                            cat.setPrice(price);
-                            cat.setDescription(descr);
+                                Cat cat = new Cat();
+                                cat.setPetType(petType);
+                                cat.setId(id);
+                                cat.setAge(age);
+                                cat.setColor(color);
+                                cat.setPrice(price);
+                                cat.setDescription(descr);
 
-                            petList.Add(cat);
+                                petList.Add(cat);
 
-                            break;
-                        case "Bird":
-                            reader.Read();
-                            type = reader.Value;
-                            reader.Read();
-                            weight = Convert.ToDouble(reader.Value);
-                            reader.Read();
-                            id = reader.Value;
-                            reader.Read();
-                            age = Convert.ToInt32(reader.Value);
-                            reader.Read();
-                            price = Convert.ToDouble(reader.Value);
-                            reader.Read();
-                            descr = reader.Value;
+                                break;
+                            case "Bird":
+                                reader.Read();
+                                type = reader.Value;
+                                reader.Read();
+                                weight = Convert.ToDouble(reader.Value);
+                                reader.Read();
+                                id = reader.Value;
+                                reader.Read();
+                                age = Convert.ToInt32(reader.Value);
+                                reader.Read();
+                                price = Convert.ToDouble(reader.Value);
+                                reader.Read();
+                                descr = reader.Value;
 
-                            Bird bird = new Bird();
-                            bird.setPetType(petType);
-                            bird.setId(id);
-                            bird.setAge(age);
-                            bird.setWeight(weight);
-                            bird.setPrice(price);
-                            bird.setDescription(descr);
+                                Bird bird = new Bird();
+                                bird.setPetType(petType);
+                                bird.setId(id);
+                                bird.setAge(age);
+                                bird.setWeight(weight);
+                                bird.setPrice(price);
+                                bird.setDescription(descr);
 
-                            petList.Add(bird);
-
-
-                            break;
-                        default:
-                            Debug.WriteLine("ERROR");
-
-                            break;
-                    }
+                                petList.Add(bird);
 
 
-                } while (reader.Read());
+                                break;
+                            default:
+                                Debug.WriteLine("ERROR");
+
+                                break;
+                        }
+                    }                 
+
+                } 
 
             }
             finally
