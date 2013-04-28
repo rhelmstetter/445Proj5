@@ -11,59 +11,48 @@ using Library;
 
 public partial class admin : System.Web.UI.Page
 {
-
-    
-
     protected void Page_Load(object sender, EventArgs e)
     {
+        refreshList();               
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        //string current = petBox.SelectedValue;
+        //string[] info = current.Split(' ');
+        //Library.PetDao.deletePet(info[0]);
+        refreshList();
+    }
 
-        
-        string xmlLoc = Path.Combine(Request.PhysicalApplicationPath, 
-            @"Listing.xml");
-        FileStream fs = null;
-        try
-        {  
-            if(File.Exists(xmlLoc))
-            {
-                fs = new FileStream(xmlLoc, FileMode.Open,
-                    FileAccess.Read);
-                XmlDocument xd = new XmlDocument();
-                xd.Load(fs);
-                fs.Close();
-                List<Library.Pet> pets = Library.petDAO.listPets();
-                //XmlNode node = xd.LastChild;
-                //XmlNodeList children = node.ChildNodes;
-                foreach(Library.Pet inv in pets)
-                {
-                    int type = 0;
-                    string info = "";
-                    // petBox.Items.Add(child.InnerText);
-                    if (inv.getPetType() == "Dog")
-                    {
-                        Library.Dog newDog = (Library.Dog)inv;
-                        info = newDog.getId() + ": " + newDog.getPetType() + ": "
-                            + newDog.getBreed();
-                    }
-                    else if (inv.getPetType() == "Cat")
-                    {
-                        Library.Cat newCat = (Library.Cat)inv;
-                        info = newCat.getId() + ": " + newCat.getPetType() + ": "
-                            + newCat.getBreed();
-                    }
-                    else if (inv.getPetType() == "Bird")
-                    {
-                        Library.Bird newBird = (Library.Bird)inv;
-                        info = newBird.getId() + ": " + newBird.getPetType() + ": "
-                            + newBird.getType();
-                    }
+    protected void refreshList()
+    {
 
-                    petBox.Items.Add(info);
-                }
-            }
-        }
-        finally
+        Library.PetDao stuff;
+        stuff = new Library.PetDao();
+        List<Library.Pet> pets = stuff.listPets();
+        petBox.Items.Add(pets.Capacity.ToString());
+        foreach (Library.Pet inv in pets)
         {
-            fs.Close();
+            string info = "";
+            // petBox.Items.Add(child.InnerText);
+            if (inv.getPetType() == "Dog")
+            {
+                Library.Dog newDog = (Library.Dog)inv;
+                info = newDog.getId() + ": " + newDog.getPetType() + ": "
+                    + newDog.getBreed();
+            }
+            else if (inv.getPetType() == "Cat")
+            {
+                Library.Cat newCat = (Library.Cat)inv;
+                info = newCat.getId() + ": " + newCat.getPetType() + ": "
+                    + newCat.getBreed();
+            }
+            else if (inv.getPetType() == "Bird")
+            {
+                Library.Bird newBird = (Library.Bird)inv;
+                info = newBird.getId() + ": " + newBird.getPetType() + ": "
+                    + newBird.getType();
+            }
+            petBox.Items.Add(info);
         }
     }
 }
