@@ -22,16 +22,45 @@ namespace Library
         }
         public User(int admin, string user, string pass)
         {
-            this.admin = admin;
-            username = user;
-            password = pass;
+            CryptoService.ServiceClient proxy = new CryptoService.ServiceClient();
+            try
+            {
+                this.admin = admin;
+                username = user;
+                password = proxy.Encrypt(pass);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                
+            }
+            finally
+            {
+                proxy.Close();
+            }
         }
 
         public int getAdmin() { return admin; }
         public string getUsername() { return username; }
         public void setUsername(string user) { username = user; }
         public string getPassword() { return password; }
-        public void setPassword(string pass) { password = pass; }
+        public void setPassword(string pass) 
+        {
+            CryptoService.ServiceClient proxy = new CryptoService.ServiceClient();
+            try
+            {
+                password = proxy.Encrypt(pass);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+    
+            }
+            finally
+            {
+                proxy.Close();
+            }
+        }
 
         public string toString()
         {
@@ -55,6 +84,41 @@ namespace Library
             {
                 Debug.WriteLine(e.Message);
             }
+        }
+
+        public User loginUser(string username, string password)
+        {
+            User user = getUser(username);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            CryptoService.ServiceClient proxy = new CryptoService.ServiceClient();
+
+            try
+            {
+                if (password == proxy.Decrypt(user.getPassword()))
+                {
+                    return user;
+                }
+                else 
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return null;
+            }
+            finally
+            {
+                proxy.Close();
+            }
+
+
         }
 
         public User getUser(string username)
