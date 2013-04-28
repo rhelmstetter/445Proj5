@@ -67,7 +67,7 @@ namespace Library
 
         public void addUser(User newUser)
         {
-            string path = @"c:\Users.txt";
+            string path = "c:\\Users.txt";
 
             // Load all users
             try

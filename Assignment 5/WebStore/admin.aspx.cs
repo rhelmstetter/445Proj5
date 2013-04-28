@@ -14,7 +14,7 @@ public partial class admin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (petBox.Items.Count < 1)
+        if(petBox.Items.Count < 1)
             refreshList();
     }
     protected void Button1_Click(object sender, EventArgs e)
@@ -25,6 +25,15 @@ public partial class admin : System.Web.UI.Page
         Library.PetDao stuff = new Library.PetDao();
         stuff.deletePet(item[0]);
         refreshList();
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        if (typeRadio.SelectedIndex == -1)
+            return;
+
+        Debug.WriteLine(typeRadio.SelectedIndex);
+
     }
 
     protected void refreshList()
@@ -57,4 +66,5 @@ public partial class admin : System.Web.UI.Page
             petBox.Items.Add(info);
         }
     }
+    
 }
