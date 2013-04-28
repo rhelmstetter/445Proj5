@@ -8,7 +8,7 @@
     <p><center style="margin-left: 40px">
     
         List of available pets<br />
-&nbsp;<asp:ListBox ID="petBox" runat="server" Height="179px" Width="374px"></asp:ListBox>
+&nbsp;<asp:ListBox ID="petBox" runat="server" Height="179px" Width="374px" ViewStateMode="Enabled"></asp:ListBox>
         <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Delete Pet" Width="145px" />
@@ -17,7 +17,7 @@
         Add a new pet to be listed:<br />
         <br />
         Type
-        <asp:RadioButtonList ID="RadioButtonList1" runat="server" Height="18px" RepeatDirection="Horizontal" Width="330px">
+        <asp:RadioButtonList ID="RadioButtonList1" runat="server" Height="18px" RepeatDirection="Horizontal" Width="330px" ViewStateMode="Enabled">
             <asp:ListItem>Dog</asp:ListItem>
             <asp:ListItem>Bird</asp:ListItem>
             <asp:ListItem>Cat</asp:ListItem>
