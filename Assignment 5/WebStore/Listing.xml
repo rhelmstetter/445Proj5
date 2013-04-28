@@ -3,10 +3,17 @@
   <Pet>
     <Type>
       Dog
+    </Type>
       <Breed>
         Mixed
       </Breed>
-    </Type>
+      <Color>
+        Brown
+      </Color>
+    
+    <Id>
+      fluffy
+    </Id>
     <Age>
       2
     </Age>
@@ -20,10 +27,17 @@
   <Pet>
     <Type>
       Bird
+    </Type>
       <Breed>
         Crocodile
       </Breed>
-    </Type>
+      <Weight>
+        400.7
+      </Weight>
+    
+    <Id>
+      croc123
+    </Id>
     <Age>
       14
     </Age>

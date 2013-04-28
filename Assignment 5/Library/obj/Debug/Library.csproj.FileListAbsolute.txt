@@ -3,8 +3,16 @@ C:\Users\Dan\Desktop\Fork\445Proj5\Assignment 5\Library\bin\Debug\Library.pdb
 C:\Users\Dan\Desktop\Fork\445Proj5\Assignment 5\Library\obj\Debug\Library.csprojResolveAssemblyReference.cache
 C:\Users\Dan\Desktop\Fork\445Proj5\Assignment 5\Library\obj\Debug\Library.dll
 C:\Users\Dan\Desktop\Fork\445Proj5\Assignment 5\Library\obj\Debug\Library.pdb
+<<<<<<< HEAD
 C:\Users\Andrew\Desktop\new_cse445\445Proj5\Assignment 5\Library\bin\Debug\Library.dll
 C:\Users\Andrew\Desktop\new_cse445\445Proj5\Assignment 5\Library\bin\Debug\Library.pdb
 C:\Users\Andrew\Desktop\new_cse445\445Proj5\Assignment 5\Library\obj\Debug\Library.csprojResolveAssemblyReference.cache
 C:\Users\Andrew\Desktop\new_cse445\445Proj5\Assignment 5\Library\obj\Debug\Library.dll
 C:\Users\Andrew\Desktop\new_cse445\445Proj5\Assignment 5\Library\obj\Debug\Library.pdb
+=======
+C:\Users\Rachel\Documents\AAA School\CSE 445\Assignment 5\445Proj5\Assignment 5\Library\bin\Debug\Library.dll
+C:\Users\Rachel\Documents\AAA School\CSE 445\Assignment 5\445Proj5\Assignment 5\Library\bin\Debug\Library.pdb
+C:\Users\Rachel\Documents\AAA School\CSE 445\Assignment 5\445Proj5\Assignment 5\Library\obj\Debug\Library.dll
+C:\Users\Rachel\Documents\AAA School\CSE 445\Assignment 5\445Proj5\Assignment 5\Library\obj\Debug\Library.pdb
+C:\Users\Rachel\Documents\AAA School\CSE 445\Assignment 5\445Proj5\Assignment 5\Library\obj\Debug\Library.csprojResolveAssemblyReference.cache
+>>>>>>> 68d40363806c5d53cb9b3157414f2437195f7c01
