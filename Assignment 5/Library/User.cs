@@ -67,14 +67,15 @@ namespace Library
 
         public void addUser(User newUser)
         {
-            string path = @"c:\Users.txt";
+            //string path = @"c:\Users.txt";
+            string path = "C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/users.txt";
 
             // Load all users
             try
             {
                 string users = File.ReadAllText(path);
                 users = users + newUser.toString() + "\n";
-                File.WriteAllText(users, path);
+                File.WriteAllText(users, "@" + path);
             }
             catch (Exception e)
             {
@@ -116,7 +117,8 @@ namespace Library
 
         public User getUser(string username)
         {
-            string path = "C:\\Users.txt";
+            //string path = "C:\\Users.txt";
+            string path = "C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/users.txt";
 
             try
             {
