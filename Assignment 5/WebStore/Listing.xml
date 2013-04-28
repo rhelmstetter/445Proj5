@@ -3,13 +3,14 @@
   <Pet>
     <Type>
       Dog
+      </Type>
       <Breed>
         Mixed
       </Breed>
       <Color>
         Brown
       </Color>
-    </Type>
+    
     <Id>
       fluffy
     </Id>
@@ -26,13 +27,14 @@
   <Pet>
     <Type>
       Bird
+      </Type>
       <Breed>
         Crocodile
       </Breed>
       <Weight>
         400.7
       </Weight>
-    </Type>
+    
     <Id>
       croc123
     </Id>

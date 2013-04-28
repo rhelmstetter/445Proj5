@@ -7,3 +7,4 @@ C:\Users\Rachel\Documents\AAA School\CSE 445\Assignment 5\445Proj5\Assignment 5\
 C:\Users\Rachel\Documents\AAA School\CSE 445\Assignment 5\445Proj5\Assignment 5\Library\bin\Debug\Library.pdb
 C:\Users\Rachel\Documents\AAA School\CSE 445\Assignment 5\445Proj5\Assignment 5\Library\obj\Debug\Library.dll
 C:\Users\Rachel\Documents\AAA School\CSE 445\Assignment 5\445Proj5\Assignment 5\Library\obj\Debug\Library.pdb
+C:\Users\Rachel\Documents\AAA School\CSE 445\Assignment 5\445Proj5\Assignment 5\Library\obj\Debug\Library.csprojResolveAssemblyReference.cache

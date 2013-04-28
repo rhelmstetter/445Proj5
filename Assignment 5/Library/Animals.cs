@@ -192,7 +192,7 @@ namespace Library
                                 break;
                             default:
                                 Debug.WriteLine(petType);
-
+                                Debug.WriteLine(reader.Value + " " + reader.Name);
                                 break;
                         }
                     }                 
