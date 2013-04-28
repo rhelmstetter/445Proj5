@@ -12,22 +12,6 @@ public partial class _Default : Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        XmlTextReader reader = null;
-        try
-        {
-            reader = new XmlTextReader("~/Listing.xml");
-            reader.WhitespaceHandling = WhitespaceHandling.None;
-            while (reader.Read())
-            {
-
-            }
-        }
-        finally
-        {
-            if (reader != null)
-            {
-                reader.Close();
-            }
-        }
+        
     }
 }

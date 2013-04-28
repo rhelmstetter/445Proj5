@@ -191,7 +191,7 @@ namespace Library
 
                                 break;
                             default:
-                                Debug.WriteLine("ERROR");
+                                Debug.WriteLine(petType);
 
                                 break;
                         }
@@ -204,8 +204,7 @@ namespace Library
             {
                 reader.Close();
             }
-
-            Debug.WriteLine(petList.Count());
+            Debug.Write(petList.Count);
             return petList;
         }
     }

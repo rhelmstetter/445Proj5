@@ -20,7 +20,7 @@ public partial class admin : System.Web.UI.Page
         //string current = petBox.SelectedValue;
         //string[] info = current.Split(' ');
         //Library.PetDao.deletePet(info[0]);
-        refreshList();
+        //refreshList();
     }
 
     protected void refreshList()
@@ -29,7 +29,7 @@ public partial class admin : System.Web.UI.Page
         Library.PetDao stuff;
         stuff = new Library.PetDao();
         List<Library.Pet> pets = stuff.listPets();
-        petBox.Items.Add(pets.Capacity.ToString());
+        petBox.Items.Add(pets.Count.ToString());
         foreach (Library.Pet inv in pets)
         {
             string info = "";
