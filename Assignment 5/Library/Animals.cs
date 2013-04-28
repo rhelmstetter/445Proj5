@@ -119,6 +119,23 @@ namespace Library
             return new Pet();
         }
 
+        public int getPetCount()
+        {
+            string path = "C:\\Listing.txt";
+
+            try
+            {
+                string[] pets = System.IO.File.ReadAllLines(path);
+                return pets.Count();
+            }
+            catch ( Exception e)
+            {
+                Debug.WriteLine("error getting pet count");
+                return -1;
+            }
+
+        }
+
         public List<Pet> listPets()
         {
             List<Pet> petList = new List<Pet>();

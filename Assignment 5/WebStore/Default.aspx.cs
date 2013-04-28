@@ -126,7 +126,7 @@ public partial class _Default : Page
         {
             for (int i = 0; i < catList.Count; i++)
             {
-                dtDogTable.Rows.Add();
+                dtCatTable.Rows.Add();
                 dtCatTable.Rows[dtCatTable.Rows.Count - 1]["ID"] = catList[i].getId();
                 dtCatTable.Rows[dtCatTable.Rows.Count - 1]["Breed"] = catList[i].getBreed();
                 dtCatTable.Rows[dtCatTable.Rows.Count - 1]["Color"] = catList[i].getColor();
