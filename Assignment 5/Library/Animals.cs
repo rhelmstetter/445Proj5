@@ -205,6 +205,7 @@ namespace Library
                 reader.Close();
             }
 
+            Debug.WriteLine(petList.Count());
             return petList;
         }
     }
