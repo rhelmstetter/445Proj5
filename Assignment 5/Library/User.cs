@@ -67,7 +67,8 @@ namespace Library
 
         public void addUser(User newUser)
         {
-            string path = "C:\\Users.txt";
+            string path = @"c:\Users.txt";
+
             // Load all users
             try
             {
@@ -78,6 +79,7 @@ namespace Library
             catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
+                Debug.WriteLine(e.GetType());
             }
         }
 
