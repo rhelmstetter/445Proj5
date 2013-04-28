@@ -25,15 +25,13 @@ public partial class admin : System.Web.UI.Page
 
     protected void refreshList()
     {
-
+        petBox.Items.Clear();
         Library.PetDao stuff;
         stuff = new Library.PetDao();
         List<Library.Pet> pets = stuff.listPets();
-        petBox.Items.Add(pets.Count.ToString());
         foreach (Library.Pet inv in pets)
         {
             string info = "";
-            // petBox.Items.Add(child.InnerText);
             if (inv.getPetType() == "Dog")
             {
                 Library.Dog newDog = (Library.Dog)inv;
