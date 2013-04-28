@@ -6,13 +6,33 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Text.RegularExpressions;
+using Library;
 
 public partial class confirmation : System.Web.UI.Page
 {
+    PetDao pet_dao = new PetDao();
+    Pet petToBuy;
+    Cat cat;
+    Dog dog;
+    Bird bird;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        string s = (string)Session["pet_to_buy"];
+            
+        if (String.IsNullOrEmpty(s))
+        {
+            int x;
+            x = 5;
+        }
 
+        else
+        {
+            petToBuy = pet_dao.StringToObject(s);
+        }
     }
+
+
     protected void btnGetDirections_Click(object sender, EventArgs e)
     {
         DirectionsService.ServiceClient prxDirections = new DirectionsService.ServiceClient();

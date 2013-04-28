@@ -5,13 +5,19 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
-using Library;
 using System.Data;
 using System.Net;
+using Library;
 
 public partial class _Default : Page
 {
     Array pets = null;
+    Pet petToBuy;
+    PetDao pet_dao = new PetDao();
+    List<Pet> petList = new List<Pet>();
+    List<Dog> dogList = new List<Dog>();
+    List<Cat> catList = new List<Cat>();
+    List<Bird> birdList = new List<Bird>();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -41,11 +47,7 @@ public partial class _Default : Page
             }
         }
 
-        PetDao pet_dao = new PetDao();
-        List<Pet> petList = new List<Pet>();
-        List<Dog> dogList = new List<Dog>();
-        List<Cat> catList = new List<Cat>();
-        List<Bird> birdList = new List<Bird>();
+        
 
         petList = pet_dao.listPets();
 
@@ -177,6 +179,8 @@ public partial class _Default : Page
         gvCat.SelectedIndex = -1;
         gvBird.SelectedIndex = -1;
         btnPurchase.Enabled = true;
+        petToBuy = (Pet)dogList[gvDog.SelectedIndex];
+        ViewState["pet"] = pet_dao.ObjectToString(petToBuy);
     }
 
     public void catIndexChanged(object sender, EventArgs e)
@@ -184,6 +188,8 @@ public partial class _Default : Page
         gvDog.SelectedIndex = -1;
         gvBird.SelectedIndex = -1;
         btnPurchase.Enabled = true;
+        petToBuy = (Pet)catList[gvCat.SelectedIndex];
+        ViewState["pet"] = pet_dao.ObjectToString(petToBuy);
     }
 
     public void birdIndexChanged(object sender, EventArgs e)
@@ -191,10 +197,15 @@ public partial class _Default : Page
         gvDog.SelectedIndex = -1;
         gvCat.SelectedIndex = -1;
         btnPurchase.Enabled = true;
+        petToBuy = (Pet)birdList[gvBird.SelectedIndex];
+        ViewState["pet"] = pet_dao.ObjectToString(petToBuy);
     }
 
     protected void btnPurchase_Click(object sender, EventArgs e)
     {
+        string s = (string)ViewState["pet"];
+        Session["pet_to_buy"] = s;
 
+        Response.Redirect("buypet.aspx");
     }
 }

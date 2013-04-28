@@ -7,9 +7,13 @@ using System.Xml;
 using System.IO;
 using System.Web;
 using System.Diagnostics;
+using System.Collections;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 namespace Library
 {
+    [Serializable]
     public class Pet
     {
         string petType;
@@ -31,7 +35,8 @@ namespace Library
 
     }
 
-    public class Dog : Pet
+    [Serializable]
+    public class Dog : Pet 
     {
         string breed;
         string color;
@@ -40,10 +45,11 @@ namespace Library
         public void setBreed(string breed) { this.breed = breed; }
         public string getBreed() { return breed; }
         public void setColor(string color) { this.color = color; }
-        public string getColor() { return breed; }
+        public string getColor() { return color; }
 
     }
 
+    [Serializable]
     public class Cat : Pet
     {
         string color;
@@ -53,9 +59,10 @@ namespace Library
         public void setBreed(string breed) { this.breed = breed; }
         public string getBreed() { return breed; }
         public void setColor(string color) { this.color = color; }
-        public string getColor() { return breed; }
+        public string getColor() { return color; }
     }
 
+    [Serializable]
     public class Bird : Pet
     {
         string type;
@@ -93,7 +100,7 @@ namespace Library
         {
             List<Pet> petList = new List<Pet>();
 
-            string path = "c:\\Listing.txt";
+            string path = "C:\\Listing.txt";
             
             string[] lines = System.IO.File.ReadAllLines(path);
             for (int x = 0; x < lines.Count(); x++)
@@ -102,7 +109,7 @@ namespace Library
                 Dog d;
                 Cat c;
                 Bird b;
-                string[] p = lines[x].Split(' ');
+                string[] p = lines[x].Split('\t');
                 switch (p[0])
                 {
                     case "Dog":
@@ -115,6 +122,7 @@ namespace Library
                         d.setPrice(Convert.ToDouble(p[5]));
                         for (int y = 6; y < p.Count(); y++) 
                             temp += p[y];
+                        d.setDescription(temp);
                         petList.Add(d);
                         break;
                     case "Cat":
@@ -127,6 +135,7 @@ namespace Library
                         c.setPrice(Convert.ToDouble(p[5]));
                         for (int y = 6; y < p.Count(); y++) 
                             temp += p[y];
+                        c.setDescription(temp);
                         petList.Add(c);
                         break;
                     case "Bird":
@@ -139,13 +148,29 @@ namespace Library
                         b.setPrice(Convert.ToDouble(p[5]));
                         for (int y = 6; y < p.Count(); y++) 
                             temp += p[y];
+                        b.setDescription(temp);
                         petList.Add(b);
                         break;
-
                 }
             }
 
             return petList;
+        }
+
+        public string ObjectToString(Pet obj)
+        {
+            MemoryStream ms = new MemoryStream();
+            new BinaryFormatter().Serialize(ms, obj);
+            return Convert.ToBase64String(ms.ToArray());
+        }
+
+        public Pet StringToObject(string base64String)
+        {
+            byte[] bytes = Convert.FromBase64String(base64String);
+            MemoryStream ms = new MemoryStream(bytes, 0, bytes.Length);
+            ms.Write(bytes, 0, bytes.Length);
+            ms.Position = 0;
+            return (Pet)new BinaryFormatter().Deserialize(ms);
         }
     }
 
