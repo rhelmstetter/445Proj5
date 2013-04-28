@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Library
 {
-    class User
+    public class User
     {
         int admin;  // 0 = False, 1 = True
         String username;
@@ -22,16 +22,38 @@ namespace Library
         }
         public User(int admin, string user, string pass)
         {
-            this.admin = admin;
-            username = user;
-            password = pass;
+
+            CryptoService.Service proxy = new CryptoService.Service();
+            try
+            {
+                this.admin = admin;
+                username = user;
+                password = proxy.Encrypt(pass);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                
+            }
         }
 
         public int getAdmin() { return admin; }
         public string getUsername() { return username; }
         public void setUsername(string user) { username = user; }
         public string getPassword() { return password; }
-        public void setPassword(string pass) { password = pass; }
+        public void setPassword(string pass) 
+        {
+            CryptoService.Service proxy = new CryptoService.Service();
+            try
+            {
+                password = proxy.Encrypt(pass);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+    
+            }
+        }
 
         public string toString()
         {
@@ -39,11 +61,13 @@ namespace Library
         }
     }
 
-    class UserDao
+    public class UserDao
     {
+       
+
         public void addUser(User newUser)
         {
-            string path = "http:\\\\webstrar.fulton.asu.edu\\website9\\Page0\\Page00\\Users.txt";
+            string path = "C:\\Users.txt";
             // Load all users
             try
             {
@@ -57,9 +81,40 @@ namespace Library
             }
         }
 
+        public User loginUser(string username, string password)
+        {
+            User user = getUser(username);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            CryptoService.Service proxy = new CryptoService.Service();
+
+            try
+            {
+                if (password == proxy.Decrypt(user.getPassword()))
+                {
+                    return user;
+                }
+                else 
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return null;
+            }
+
+
+        }
+
         public User getUser(string username)
         {
-            string path = "http:\\\\webstrar.fulton.asu.edu\\website9\\Page0\\Page00\\Users.txt";
+            string path = "C:\\Users.txt";
 
             try
             {

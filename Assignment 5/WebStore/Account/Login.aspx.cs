@@ -4,13 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Library;
+using System.Diagnostics;
+
 
 public partial class Account_Login : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         RegisterHyperLink.NavigateUrl = "Register.aspx";
-        OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
+        //OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
 
         var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
         if (!String.IsNullOrEmpty(returnUrl))
@@ -18,4 +21,30 @@ public partial class Account_Login : Page
             RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
         }
     }
+
+
+    protected void Unnamed6_Click(object sender, EventArgs e)
+    {
+        UserDao dao = new UserDao();
+
+        User admin = new User(1, "admin", "pass");
+
+        dao.addUser(admin);
+
+
+
+        User current = dao.loginUser("admin", "pass");
+
+        if (current != null)
+        {
+            Debug.WriteLine("Logged IN Correctly!!!");
+        }
+        else
+        {
+            Debug.WriteLine("FUCK THIS FUCKING BULLSHIT");
+        }
+
+        
+    }
 }
+
