@@ -1,2 +1,6 @@
-Dog Mixed Brown Fluffy 2 100.00 Ugly mutt: can't wait to get rid of.
-Bird Crocodile 400.7 Croc123 14 1000.00 May bite.
+Dog	Great Dane	Brown	Fluffy	2	100.00	Ugly mutt: can't wait to get rid of.
+Bird	Crocodile	400.7	Croc123	14	1000.00	May bite.
+Dog	Lab	Black	Belle	5	650.99	El stupido, also known as 'Fatatouille'
+Dog	German Shepard	Brown/Tan/Black	Maximus	5	1000.99	The protector of the Earth
+Bird	Flying T-Rex	4000.5	Death Bringer	65000	666.66	The unholy offspring of Death and Hell itself
+Bird	Pterodactyl	1000	Noble Beast	700000	1000000.66	Your kick ass flying dinosaur to rule the world.

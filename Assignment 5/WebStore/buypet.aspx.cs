@@ -7,48 +7,72 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.IO;
 using System.Drawing;
+using Library;
 
 public partial class buypet : System.Web.UI.Page
 {
-    public string animalType, age, price, description, breed, color, type, weight;
+    PetDao pet_dao = new PetDao();
+    Pet petToBuy;
+    public string animalType, name, age, price, description, breed, color, type, weight;
     ImageService.ServiceClient prxImage = new ImageService.ServiceClient();
     StringService.ServiceClient prxString = new StringService.ServiceClient();
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        string captchaString = prxString.GetRandomString("6");
-        var image = System.Drawing.Image.FromStream(prxImage.GetImage(captchaString));
- 
-        animalType = "Bird";
-        type = "Flying T-rex";
-        weight = "10000000 pounds";
-        age = "666";
-        price = "your firstborn";
-        description = "The unholy offspring of death and hell";
+        string s = (string)Session["pet_to_buy"];
 
-        //breed = "mixed";
-        //price = " 100";
-        //description = " ugly fatass mutt";
-
-        //animalType = "Dog";
-
-        switch(animalType)
+        if (String.IsNullOrEmpty(s))
         {
-            case "Cat":
-                imgPetPic.ImageUrl = "~/Images/cat.jpg";
-                lblAnimalInfo.Text = "Breed:\t" + breed + "<br /> Color:\t" + color + "<br />Price:\t" + price + "<br />Description:\t" + description;
-                break;
-            case "Dog":
-                imgPetPic.ImageUrl = "~/Images/dog.jpg";
-                lblAnimalInfo.Text = "Breed:\t" + breed + "<br /> Age:\t" + age + "<br />Price:\t" + price + "<br />Description:\t" + description;
-                break;
-            case "Bird":
-                imgPetPic.ImageUrl = "~/Images/bird.jpg";
-                lblAnimalInfo.Text = "Type:\t" + type + "<br /> Age:\t" + age + "<br />Weight:\t" + weight + "<br />Price:\t" + price + "<br />Description:\t" + description;
-                break;
-            default:
-                break;
+            Response.Redirect("sorry.aspx");
         }
+
+        else
+        {
+            lblAnimalInfo.Visible = true;
+            imgPetPic.Visible = true;
+
+            petToBuy = pet_dao.StringToObject(s);
+
+            string captchaString = prxString.GetRandomString("6");
+            var image = System.Drawing.Image.FromStream(prxImage.GetImage(captchaString));
+
+            animalType = petToBuy.getPetType();
+            name = petToBuy.getId();
+            age = petToBuy.getAge().ToString();
+            price = petToBuy.getPrice().ToString();
+            description = petToBuy.getDescription();
+
+            switch (animalType)
+            {
+                case "Cat":
+                    Cat c = (Cat)petToBuy;
+                    color = c.getColor();
+                    breed = c.getBreed();
+                    imgPetPic.ImageUrl = "~/Images/cat.jpg";
+                    lblAnimalInfo.Text = "Name:\t" + name + "<br />Breed:\t" + breed + "<br /> Color:\t" + color + "<br />Price:\t" + price + "<br />Description:\t" + description;
+                    break;
+
+                case "Dog":
+                    Dog d = (Dog)petToBuy;
+                    color = d.getColor();
+                    breed = d.getBreed();
+                    imgPetPic.ImageUrl = "~/Images/dog.jpg";
+                    lblAnimalInfo.Text = "Name:\t" + name + "<br />Breed:\t" + breed + "<br />Age:\t" + age + "<br > Color:\t" + color + "<br />Price:\t" + price + "<br />Description:\t" + description;
+                    break;
+
+                case "Bird":
+                    Bird b = (Bird)petToBuy;
+                    type = b.getType();
+                    weight = b.getWeight().ToString();
+                    imgPetPic.ImageUrl = "~/Images/bird.jpg";
+                    lblAnimalInfo.Text = "Type:\t" + type + "<br /> Age:\t" + age + "<br />Weight:\t" + weight + "<br />Price:\t" + price + "<br />Description:\t" + description;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        
     }
     protected void btnBuy_Click(object sender, EventArgs e)
     {
