@@ -3,7 +3,7 @@
   <Pet>
     <Type>
       Dog
-      </Type>
+    </Type>
       <Breed>
         Mixed
       </Breed>
@@ -27,7 +27,7 @@
   <Pet>
     <Type>
       Bird
-      </Type>
+    </Type>
       <Breed>
         Crocodile
       </Breed>
