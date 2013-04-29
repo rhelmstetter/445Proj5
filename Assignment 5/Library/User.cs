@@ -63,30 +63,35 @@ namespace Library
 
     public class UserDao
     {
-        private string path = "c:\\Users.txt";
 
-        public void addUser(User newUser)
+
+
+        public bool addUser(User newUser)
         {
-            //string path = @"c:\Users.txt";
-            string path = "C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/users.txt";
-
             // Load all users
             try
             {
                 string users = File.ReadAllText(path);
+
+                if (users.Contains(newUser.getUsername()))
+                {
+                    return false;
+                }
                 users = users + newUser.toString() + "\n";
 
                 //File.WriteAllText(users, @path);
 
-                System.IO.StreamWriter output = new System.IO.StreamWriter(@"C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/users.txt");
+                System.IO.StreamWriter output = new System.IO.StreamWriter(@"C:\Users.txt");
                 output.WriteLine(users);
                 output.Close();
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.Message);
                 Debug.WriteLine(e.GetType());
+
             }
+
+            return true;
 
         }
 
@@ -103,6 +108,10 @@ namespace Library
 
             try
             {
+               
+                string decrypted = proxy.Decrypt(user.getPassword());
+
+                if (password == decrypted)
                 string pword = user.getPassword();
                 string whatItIs = proxy.Decrypt(pword);
                 whatItIs = proxy.Decrypt(whatItIs);
@@ -113,6 +122,7 @@ namespace Library
                 }
                 else 
                 {
+                    Debug.WriteLine("Password was incorrect");
                     return null;
                 }
             }
@@ -127,6 +137,7 @@ namespace Library
 
         public User getUser(string username)
         {
+            CryptoService.Service proxy = new CryptoService.Service();
             //string path = "C:\\Users.txt";
             string path = "C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/users.txt";
 
@@ -139,7 +150,8 @@ namespace Library
                     string[] fields = users[i].Split(' ');
                     if (fields.Length == 3 && fields[1] == username)
                     {
-                        User user = new User(Convert.ToInt32(fields[0]), fields[1], fields[2]);
+                        string decrPass = proxy.Decrypt(fields[2]);
+                        User user = new User(Convert.ToInt32(fields[0]), fields[1], decrPass);
                         return user;
                     }
 
