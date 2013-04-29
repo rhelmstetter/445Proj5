@@ -1,4 +1,4 @@
-﻿<%@ Page Title="RumbleFish Online Store for Dead Animals!!!" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="RumbleFish Online Store!!!" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <%@ Register TagPrefix="cse" TagName="user" Src="~/PetCountControl.ascx" %>
 

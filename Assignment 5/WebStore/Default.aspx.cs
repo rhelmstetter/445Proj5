@@ -22,8 +22,6 @@ public partial class _Default : Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        string name = ConfigurationManager.AppSettings["ADMIN"];
-
         HttpCookie myCookies = Request.Cookies["myKey"];
 
         if (myCookies != null)

@@ -31,7 +31,7 @@ public partial class confirmation : System.Web.UI.Page
             lblFortune.Text = cookieMonster.GetFortuneCookie();
 
             petToBuy = pet_dao.StringToObject(s);
-            //pet_dao.deletePet(petToBuy.getId());
+            pet_dao.deletePet(petToBuy.getId());
             lblPetBough.Text = petToBuy.getId();
         }
     }

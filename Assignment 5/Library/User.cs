@@ -33,7 +33,7 @@ namespace Library
             catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
-                
+
             }
         }
 
@@ -41,7 +41,7 @@ namespace Library
         public string getUsername() { return username; }
         public void setUsername(string user) { username = user; }
         public string getPassword() { return password; }
-        public void setPassword(string pass) 
+        public void setPassword(string pass)
         {
             CryptoService.Service proxy = new CryptoService.Service();
             try
@@ -51,7 +51,7 @@ namespace Library
             catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
-    
+
             }
         }
 
@@ -64,7 +64,8 @@ namespace Library
     public class UserDao
     {
 
-        string path = "C:\\Users.txt";
+        //string path = "C:\\Users.txt";
+        string path = "C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/users.txt";
 
         public bool addUser(User newUser)
         {
@@ -81,7 +82,8 @@ namespace Library
 
                 //File.WriteAllText(users, @path);
 
-                System.IO.StreamWriter output = new System.IO.StreamWriter(@"C:\Users.txt");
+                //System.IO.StreamWriter output = new System.IO.StreamWriter(@"C:\Users.txt");
+                System.IO.StreamWriter output = new System.IO.StreamWriter(@path);
                 output.WriteLine(users);
                 output.Close();
             }
@@ -108,19 +110,14 @@ namespace Library
 
             try
             {
-               
+
                 string decrypted = proxy.Decrypt(user.getPassword());
 
                 if (password == decrypted)
-                string pword = user.getPassword();
-                string whatItIs = proxy.Decrypt(pword);
-                whatItIs = proxy.Decrypt(whatItIs);
-
-                if (password == proxy.Decrypt(user.getPassword()))
                 {
                     return user;
                 }
-                else 
+                else
                 {
                     Debug.WriteLine("Password was incorrect");
                     return null;
@@ -140,6 +137,7 @@ namespace Library
             CryptoService.Service proxy = new CryptoService.Service();
             //string path = "C:\\Users.txt";
             string path = "C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/users.txt";
+
 
             try
             {
@@ -166,7 +164,7 @@ namespace Library
 
             return null;
         }
-        
+
 
 
     }
