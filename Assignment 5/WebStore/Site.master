@@ -48,7 +48,7 @@
 
                             <ul>
                                 <li><cse:user ID="User1" runat="server" /></li>
-                                <li><a id="loginLink" runat="server" href="~/Account/Login.aspx">Log in</a></li>
+                                <li><a id="loginLink" runat="server" href="~/ourlogon.aspx">Log in</a></li>
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>

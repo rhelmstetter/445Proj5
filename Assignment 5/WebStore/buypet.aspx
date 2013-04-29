@@ -19,12 +19,6 @@
             <br />
 
             <br />
-            We need to make sure that you aren't a robot and buying our pets to turn them into hot dogs and soup! <br />
-            Please verify you are human by entering the numbers in the image below.<br /> <br />
-
-            <asp:Image ID="imgCaptcha" runat="server" Height="38px" Width="149px"></asp:Image>
-
-            <br />
             <table>
                 <tr>
                     <td><asp:Button ID="btnBuy" runat="server" Text="BUY YOUR PET!" OnClick="btnBuy_Click"></asp:Button></td>
