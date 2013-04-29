@@ -20,6 +20,16 @@
     void Application_Error(object sender, EventArgs e)
     {
         // Code that runs when an unhandled error occurs
+        Exception exception = Server.GetLastError();
+        if (exception != null)
+        {
+            if (HttpContext.Current.Server != null)
+            {
+                HttpContext.Current.Server.Transfer("/Error.aspx");
+            }
+        }
+
+        
 
     }
 
