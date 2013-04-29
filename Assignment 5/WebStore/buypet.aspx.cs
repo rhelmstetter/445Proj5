@@ -19,60 +19,69 @@ public partial class buypet : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        string s = (string)Session["pet_to_buy"];
+        if (Request.Cookies["Username"] == null)
+            Response.Redirect("ourlogon.aspx");
 
-        if (String.IsNullOrEmpty(s))
-        {
-            Response.Redirect("sorry.aspx");
-        }
+        if ((Request.Cookies["Admin"].Value == "False") || (Request.Cookies["Admin"] == null))
+            Response.Redirect("ourlogon.aspx");
 
         else
         {
-            lblAnimalInfo.Visible = true;
-            imgPetPic.Visible = true;
 
-            petToBuy = pet_dao.StringToObject(s);
+            string s = (string)Session["pet_to_buy"];
 
-            string captchaString = prxString.GetRandomString("6");
-            var image = System.Drawing.Image.FromStream(prxImage.GetImage(captchaString));
-
-            animalType = petToBuy.getPetType();
-            name = petToBuy.getId();
-            age = petToBuy.getAge().ToString();
-            price = petToBuy.getPrice().ToString();
-            description = petToBuy.getDescription();
-
-            switch (animalType)
+            if (String.IsNullOrEmpty(s))
             {
-                case "Cat":
-                    Cat c = (Cat)petToBuy;
-                    color = c.getColor();
-                    breed = c.getBreed();
-                    imgPetPic.ImageUrl = "~/Images/cat.jpg";
-                    lblAnimalInfo.Text = "Name:\t" + name + "<br />Breed:\t" + breed + "<br /> Color:\t" + color + "<br />Price:\t" + price + "<br />Description:\t" + description;
-                    break;
-
-                case "Dog":
-                    Dog d = (Dog)petToBuy;
-                    color = d.getColor();
-                    breed = d.getBreed();
-                    imgPetPic.ImageUrl = "~/Images/dog.jpg";
-                    lblAnimalInfo.Text = "Name:\t" + name + "<br />Breed:\t" + breed + "<br />Age:\t" + age + "<br > Color:\t" + color + "<br />Price:\t" + price + "<br />Description:\t" + description;
-                    break;
-
-                case "Bird":
-                    Bird b = (Bird)petToBuy;
-                    type = b.getType();
-                    weight = b.getWeight().ToString();
-                    imgPetPic.ImageUrl = "~/Images/bird.jpg";
-                    lblAnimalInfo.Text = "Type:\t" + type + "<br /> Age:\t" + age + "<br />Weight:\t" + weight + "<br />Price:\t" + price + "<br />Description:\t" + description;
-                    break;
-                default:
-                    break;
+                Response.Redirect("sorry.aspx");
             }
-        }
 
-        
+            else
+            {
+                lblAnimalInfo.Visible = true;
+                imgPetPic.Visible = true;
+
+                petToBuy = pet_dao.StringToObject(s);
+
+                string captchaString = prxString.GetRandomString("6");
+                var image = System.Drawing.Image.FromStream(prxImage.GetImage(captchaString));
+
+                animalType = petToBuy.getPetType();
+                name = petToBuy.getId();
+                age = petToBuy.getAge().ToString();
+                price = petToBuy.getPrice().ToString();
+                description = petToBuy.getDescription();
+
+                switch (animalType)
+                {
+                    case "Cat":
+                        Cat c = (Cat)petToBuy;
+                        color = c.getColor();
+                        breed = c.getBreed();
+                        imgPetPic.ImageUrl = "~/Images/cat.jpg";
+                        lblAnimalInfo.Text = "Name:\t" + name + "<br />Breed:\t" + breed + "<br /> Color:\t" + color + "<br />Price:\t" + price + "<br />Description:\t" + description;
+                        break;
+
+                    case "Dog":
+                        Dog d = (Dog)petToBuy;
+                        color = d.getColor();
+                        breed = d.getBreed();
+                        imgPetPic.ImageUrl = "~/Images/dog.jpg";
+                        lblAnimalInfo.Text = "Name:\t" + name + "<br />Breed:\t" + breed + "<br />Age:\t" + age + "<br > Color:\t" + color + "<br />Price:\t" + price + "<br />Description:\t" + description;
+                        break;
+
+                    case "Bird":
+                        Bird b = (Bird)petToBuy;
+                        type = b.getType();
+                        weight = b.getWeight().ToString();
+                        imgPetPic.ImageUrl = "~/Images/bird.jpg";
+                        lblAnimalInfo.Text = "Type:\t" + type + "<br /> Age:\t" + age + "<br />Weight:\t" + weight + "<br />Price:\t" + price + "<br />Description:\t" + description;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+        }
     }
     protected void btnBuy_Click(object sender, EventArgs e)
     {

@@ -19,20 +19,29 @@ public partial class confirmation : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        string s = (string)Session["pet_to_buy"];
-            
-        if (String.IsNullOrEmpty(s))
-        {
-            Response.Redirect("default.aspx");
-        }
+        if (Request.Cookies["Username"] == null)
+            Response.Redirect("ourlogon.aspx");
+
+        if ((Request.Cookies["Admin"].Value == "False") || (Request.Cookies["Admin"] == null))
+            Response.Redirect("ourlogon.aspx");
 
         else
         {
-            lblFortune.Text = cookieMonster.GetFortuneCookie();
+            string s = (string)Session["pet_to_buy"];
 
-            petToBuy = pet_dao.StringToObject(s);
-            pet_dao.deletePet(petToBuy.getId());
-            lblPetBough.Text = petToBuy.getId();
+            if (String.IsNullOrEmpty(s))
+            {
+                Response.Redirect("default.aspx");
+            }
+
+            else
+            {
+                lblFortune.Text = cookieMonster.GetFortuneCookie();
+
+                petToBuy = pet_dao.StringToObject(s);
+                pet_dao.deletePet(petToBuy.getId());
+                lblPetBough.Text = petToBuy.getId();
+            }
         }
     }
 

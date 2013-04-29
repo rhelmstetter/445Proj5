@@ -14,7 +14,13 @@ public partial class admin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(petBox.Items.Count < 1)
+        if (Request.Cookies["Username"] == null)
+            Response.Redirect("ourlogon.aspx");
+
+        if ((Request.Cookies["Admin"].Value == "False") || (Request.Cookies["Admin"] == null))
+            Response.Redirect("ourlogon.aspx");
+
+        if (petBox.Items.Count < 1)
             refreshList();
     }
     protected void Button1_Click(object sender, EventArgs e)

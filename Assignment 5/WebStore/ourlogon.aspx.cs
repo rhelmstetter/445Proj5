@@ -12,10 +12,11 @@ using System.Net;
 public partial class ourlogon : System.Web.UI.Page
 {
     User current;
+    bool admin;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        admin = false;
     }
     protected void btnLogon_Click(object sender, EventArgs e)
     {
@@ -24,25 +25,30 @@ public partial class ourlogon : System.Web.UI.Page
 
         if (userName == ConfigurationManager.AppSettings["ADMIN"] && password == ConfigurationManager.AppSettings["PASSWORD"])
         {
-            current.setUsername("Admin");
-
+            admin = true;
         }
 
         else
         {
             UserDao dao = new UserDao();
             current = dao.loginUser(userName, password);
+        }
 
-            if (current != null)
+            if ((current != null) ||  (admin == true))
             {
-                HttpCookie myCookies = Request.Cookies["myKeyie"];
-                myCookies["Username"] = "test";// current.getUsername();
-
-                if (current.getUsername() == "admin")
-                    myCookies["Admin"] = "True";
+                if (admin)
+                {
+                    Response.Cookies["Username"].Value = "Admin";
+                    Response.Cookies["Admin"].Value = "True";
+                }
                 else
-                    myCookies["Admin"] = "False";
-                
+                {
+                    string name = current.getUsername();
+                    Response.Cookies["Username"].Value = current.getUsername();
+                    Response.Cookies["Admin"].Value = "False";
+                }
+                //HttpCookie myCookies = Request.Cookies["myKeyie"];
+                //myCookies["Username"] = "test";// current.getUsername();
 
                 Debug.WriteLine("Logged IN Correctly!!!");
                 Response.Redirect("default.aspx");
@@ -54,7 +60,4 @@ public partial class ourlogon : System.Web.UI.Page
                 lblErro.Text = "Password and User Name combination are not valid.";
             }
         }
-        
-
-    }
 }
