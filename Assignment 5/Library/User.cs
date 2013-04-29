@@ -63,7 +63,8 @@ namespace Library
 
     public class UserDao
     {
-        private string path = "C:\\Users\\Rachel\\Desktop\\Users.txt";
+
+
 
         public bool addUser(User newUser)
         {
@@ -80,7 +81,7 @@ namespace Library
 
                 //File.WriteAllText(users, @path);
 
-                System.IO.StreamWriter output = new System.IO.StreamWriter(@"C:\Users\Rachel\Desktop\Users.txt");
+                System.IO.StreamWriter output = new System.IO.StreamWriter(@"C:\Users.txt");
                 output.WriteLine(users);
                 output.Close();
 
@@ -108,6 +109,7 @@ namespace Library
 
             try
             {
+               
                 string decrypted = proxy.Decrypt(user.getPassword());
 
                 if (password == decrypted)
