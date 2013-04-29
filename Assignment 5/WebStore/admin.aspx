@@ -28,15 +28,20 @@
         Type (Bird Only):<br />
         <asp:TextBox ID="typeBox" runat="server" Width="261px"></asp:TextBox>
         <br />
-        Color (Cat and Bird Only):<br />
+        Color (Dog and Cat Only):<br />
         <asp:TextBox ID="colorBox" runat="server" Width="261px"></asp:TextBox>
         <br />
+        Weight (Bird Only):<br />
+        <asp:TextBox ID="weightBox" runat="server" Width="262px"></asp:TextBox>
+        <br />
+        ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="idBox" runat="server" Width="141px"></asp:TextBox>
         <br />
         Age:&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="ageBox" runat="server"></asp:TextBox>
+        <asp:TextBox ID="ageBox" runat="server" Width="141px"></asp:TextBox>
         <br />
         Price:&nbsp;&nbsp;
-        <asp:TextBox ID="priceBox" runat="server"></asp:TextBox>
+        <asp:TextBox ID="priceBox" runat="server" Width="141px"></asp:TextBox>
         <br />
         Descr:&nbsp;
         <asp:TextBox ID="descBox" runat="server" TextMode="MultiLine" Width="485px"></asp:TextBox>

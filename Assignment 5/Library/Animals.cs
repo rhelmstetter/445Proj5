@@ -42,6 +42,15 @@ namespace Library
         string color;
 
         public Dog() { }
+        public Dog(Pet p)
+        {
+            setPetType("Dog");
+            setId(p.getId());
+            setAge(p.getAge());
+            setPrice(p.getPrice());
+            setDescription(p.getDescription());
+
+        }
         public void setBreed(string breed) { this.breed = breed; }
         public string getBreed() { return breed; }
         public void setColor(string color) { this.color = color; }
@@ -56,6 +65,15 @@ namespace Library
         string breed;
 
         public Cat() { }
+        public Cat(Pet p)
+        {
+            setPetType("Cat");
+            setId(p.getId());
+            setAge(p.getAge());
+            setPrice(p.getPrice());
+            setDescription(p.getDescription());
+
+        }
         public void setBreed(string breed) { this.breed = breed; }
         public string getBreed() { return breed; }
         public void setColor(string color) { this.color = color; }
@@ -69,6 +87,15 @@ namespace Library
         double weight;
 
         public Bird() { }
+        public Bird(Pet p)
+        {
+            setPetType("Bird");
+            setId(p.getId());
+            setAge(p.getAge());
+            setPrice(p.getPrice());
+            setDescription(p.getDescription());
+
+        }
         public void setType(string type) { this.type = type; }
         public string getType() { return type; }
         public void setWeight(double weight) { this.weight = weight; }
@@ -81,9 +108,53 @@ namespace Library
     {
         public PetDao() { }
 
-        public void addPet(Pet newPet) 
+        public void addPet(Pet p) 
         {
-        
+            string path = "c:\\Listing.txt";
+            string[] lines = System.IO.File.ReadAllLines(path);
+            for (int x = 0; x < lines.Count(); x++)
+            {
+                string[] ind = lines[x].Split('\t');
+                if (ind.Count() > 3)
+                {
+                    if (p.getId() == ind[3])
+                    {
+                        return;
+                    }
+                }
+            }
+            string result = "";
+
+            result += p.getPetType() + "\t";
+            switch (p.getPetType())
+            {
+                case "Dog":
+                    Dog d = new Dog();
+                    d = (Dog)p;
+                    result += d.getBreed() + "\t" + d.getColor() + "\t" + d.getId() + "\t" + d.getAge() + "\t" + 
+                        d.getPrice() + "\t" + d.getDescription();
+                    break;
+                case "Cat":
+                    Cat c = new Cat();
+                    c = (Cat)p;
+                    result += c.getBreed() + "\t" + c.getColor() + "\t" + c.getId() + "\t" + c.getAge() + "\t" + 
+                        c.getPrice() + "\t" + c.getDescription();
+                    break;
+                case "Bird":
+                    Bird b = new Bird();
+                    b = (Bird)p;
+                    result += b.getType() + "\t" + b.getWeight() + "\t" + b.getId() + "\t" + b.getAge() + "\t" +
+                        b.getPrice() + "\t" + b.getDescription();
+                    break;
+            }
+
+            using (StreamWriter w = File.AppendText(path))
+            {
+                w.WriteLine(result);
+            }
+
+
+
         }
 
         public void deletePet(string petID)
@@ -96,7 +167,6 @@ namespace Library
                 string[] ind = lines[x].Split('\t');
                 if (ind.Count() > 3)
                 {
-                    Debug.WriteLine(petID + "  " + ind[3]);
                     if (petID == ind[3])
                     {
                         del = x;
@@ -117,6 +187,23 @@ namespace Library
         public Pet getPet(string id)
         {
             return new Pet();
+        }
+
+        public int getPetCount()
+        {
+            string path = "C:\\Listing.txt";
+
+            try
+            {
+                string[] pets = System.IO.File.ReadAllLines(path);
+                return pets.Count();
+            }
+            catch ( Exception e)
+            {
+                Debug.WriteLine("error getting pet count");
+                return -1;
+            }
+
         }
 
         public List<Pet> listPets()
