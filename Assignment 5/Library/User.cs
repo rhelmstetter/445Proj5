@@ -33,7 +33,6 @@ namespace Library
             catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
-
             }
         }
 
@@ -64,8 +63,9 @@ namespace Library
     public class UserDao
     {
 
-        //string path = "C:\\Users.txt";
-        string path = "C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/users.txt";
+        string path = "C:\\Users.txt";
+        //string path = "C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/users.txt";
+        //string path = "C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/users.txt";
 
         public bool addUser(User newUser)
         {
@@ -84,6 +84,7 @@ namespace Library
 
                 //System.IO.StreamWriter output = new System.IO.StreamWriter(@"C:\Users.txt");
                 System.IO.StreamWriter output = new System.IO.StreamWriter(@path);
+                //System.IO.StreamWriter output = new System.IO.StreamWriter(@path);
                 output.WriteLine(users);
                 output.Close();
             }
@@ -117,7 +118,7 @@ namespace Library
                 {
                     return user;
                 }
-                else
+                else 
                 {
                     Debug.WriteLine("Password was incorrect");
                     return null;
@@ -135,8 +136,7 @@ namespace Library
         public User getUser(string username)
         {
             CryptoService.Service proxy = new CryptoService.Service();
-            //string path = "C:\\Users.txt";
-            string path = "C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/users.txt";
+            
 
 
             try

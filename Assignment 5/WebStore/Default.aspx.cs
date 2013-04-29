@@ -22,33 +22,7 @@ public partial class _Default : Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        HttpCookie myCookies = Request.Cookies["myKey"];
-
-        if (myCookies != null)
-        {
-            gvDog.SelectedIndex = Convert.ToInt32(myCookies["gvDogIndex"]);
-            gvCat.SelectedIndex = Convert.ToInt32(myCookies["gvCatIndex"]);
-            gvBird.SelectedIndex = Convert.ToInt32(myCookies["gvBirdIndex"]);
-
-            btnPurchase.Enabled = true;
-
-            if (gvDog.SelectedIndex >= 0)
-            {
-
-            }
-
-            if (gvCat.SelectedIndex >= 0)
-            {
-
-            }
-
-            if (gvBird.SelectedIndex >= 0)
-            {
-
-            }
-        }
-
-        
+                
 
         petList = pet_dao.listPets();
 
