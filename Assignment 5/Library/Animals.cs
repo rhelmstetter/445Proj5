@@ -160,8 +160,8 @@ namespace Library
         public void deletePet(string petID)
         {
             int del = -1;
-            //string path = "c:\\Listing.txt";
-            string path = "C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/Listing.txt";
+            string path = "c:\\Listing.txt";
+            //string path = "C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/Listing.txt";
             string[] lines = System.IO.File.ReadAllLines(path);
             for (int x = 0; x < lines.Count(); x++)
             {
@@ -175,8 +175,8 @@ namespace Library
                     }
                 }
             }
-            System.IO.StreamWriter output = new System.IO.StreamWriter(@"C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/Listing.txt");
-            //System.IO.StreamWriter output = new System.IO.StreamWriter(@"C:\\Listing.txt");
+            //System.IO.StreamWriter output = new System.IO.StreamWriter(@"C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/Listing.txt");
+            System.IO.StreamWriter output = new System.IO.StreamWriter(@"C:\\Listing.txt");
             string[] newLines = new string[lines.Count() - 1];
             for (int x = 0; x < lines.Count(); x++)
             {
@@ -212,8 +212,8 @@ namespace Library
         {
             List<Pet> petList = new List<Pet>();
 
-            //string path = "C:\\Listing.txt";
-            string path = "C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/Listing.txt";
+            string path = "C:\\Listing.txt";
+            //string path = "C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/Listing.txt";
             
             string[] lines = System.IO.File.ReadAllLines(path);
             for (int x = 0; x < lines.Count(); x++)

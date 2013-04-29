@@ -135,7 +135,6 @@ namespace Library
         public User getUser(string username)
         {
             CryptoService.Service proxy = new CryptoService.Service();
-            string path = "C:\\Users.txt";
             
 
             try
