@@ -1,6 +1,7 @@
 ﻿<%@ Application Language="C#" %>
 <%@ Import Namespace="WebStore" %>
 <%@ Import Namespace="System.Web.Optimization" %>
+<%@ Import Namespace="System.Diagnostics" %>
 
 <script runat="server">
 
@@ -25,6 +26,7 @@
         {
             if (HttpContext.Current.Server != null)
             {
+                Debug.WriteLine(exception.Message);
                 HttpContext.Current.Server.Transfer("/Error.aspx");
             }
         }

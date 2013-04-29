@@ -22,7 +22,7 @@ public partial class confirmation : System.Web.UI.Page
         if (Request.Cookies["Username"] == null)
             Response.Redirect("ourlogon.aspx");
 
-        if ((Request.Cookies["Admin"].Value == "False") || (Request.Cookies["Admin"] == null))
+        if ((Request.Cookies["Admin"] == null))
             Response.Redirect("ourlogon.aspx");
 
         else
