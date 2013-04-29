@@ -10,6 +10,7 @@ using Library;
 
 public partial class confirmation : System.Web.UI.Page
 {
+    FortuneCookie.FullerDataFortuneCookieSoapClient cookieMonster = new FortuneCookie.FullerDataFortuneCookieSoapClient();
     PetDao pet_dao = new PetDao();
     Pet petToBuy;
     Cat cat;
@@ -22,13 +23,16 @@ public partial class confirmation : System.Web.UI.Page
             
         if (String.IsNullOrEmpty(s))
         {
-            int x;
-            x = 5;
+            Response.Redirect("default.aspx");
         }
 
         else
         {
+            lblFortune.Text = cookieMonster.GetFortuneCookie();
+
             petToBuy = pet_dao.StringToObject(s);
+            //pet_dao.deletePet(petToBuy.getId());
+            lblPetBough.Text = petToBuy.getId();
         }
     }
 

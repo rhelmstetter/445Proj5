@@ -84,7 +84,6 @@ namespace Library
                 System.IO.StreamWriter output = new System.IO.StreamWriter(@"C:\Users.txt");
                 output.WriteLine(users);
                 output.Close();
-
             }
             catch (Exception e)
             {
@@ -113,6 +112,11 @@ namespace Library
                 string decrypted = proxy.Decrypt(user.getPassword());
 
                 if (password == decrypted)
+                string pword = user.getPassword();
+                string whatItIs = proxy.Decrypt(pword);
+                whatItIs = proxy.Decrypt(whatItIs);
+
+                if (password == proxy.Decrypt(user.getPassword()))
                 {
                     return user;
                 }
@@ -134,6 +138,8 @@ namespace Library
         public User getUser(string username)
         {
             CryptoService.Service proxy = new CryptoService.Service();
+            //string path = "C:\\Users.txt";
+            string path = "C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/users.txt";
 
             try
             {

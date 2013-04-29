@@ -2,20 +2,20 @@
 <%@ Register TagPrefix="cse" TagName="user" Src="~/CurrentUser.ascx" %>
 <!DOCTYPE html>
 <html lang="en">
-<head runat="server">
+<head id="Head1" runat="server">
     <meta charset="utf-8" />
     <title><%: Page.Title %> - Rumblefish Online Pet Store</title>
-    <asp:PlaceHolder runat="server">      
+    <asp:PlaceHolder ID="PlaceHolder1" runat="server">      
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:BundleReference runat="server" Path="~/Content/css" /> 
+    <webopt:BundleReference ID="BundleReference1" runat="server" Path="~/Content/css" /> 
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
 </head>
 <body>
-    <form runat="server">
-    <asp:ScriptManager runat="server">
+    <form id="Form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
         <Scripts>
             <%--Framework scripts--%>
             <asp:ScriptReference Name="MsAjaxBundle" />
@@ -42,7 +42,7 @@
             </div>
             <div class="float-right">
                 <section id="login">
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                    <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
 
                             <ul>
@@ -53,19 +53,19 @@
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <p>
-                                Hello, <a runat="server" class="username" href="~/Account/Manage.aspx" title="Manage your account">
-                                    <asp:LoginName runat="server" CssClass="username" />
+                                Hello, <a id="A1" runat="server" class="username" href="~/Account/Manage.aspx" title="Manage your account">
+                                    <asp:LoginName ID="LoginName1" runat="server" CssClass="username" />
                                 </a>!
-                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
+                                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
                             </p>
                         </LoggedInTemplate>
                     </asp:LoginView>
                 </section>
                 <nav>
                     <ul id="menu">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/admin.aspx">Admin</a></li>
-                        <li><a runat="server" href="~/Contact.aspx">Contact</a></li>
+                        <li><a id="A2" runat="server" href="~/">Home</a></li>
+                        <li><a id="A3" runat="server" href="~/admin.aspx">Admin</a></li>
+                        <li><a id="A4" runat="server" href="~/Contact.aspx">Contact</a></li>
                     </ul>
                 </nav>
             </div>
