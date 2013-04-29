@@ -147,12 +147,12 @@ namespace Library
                         b.getPrice() + "\t" + b.getDescription();
                     break;
             }
-
-            using (StreamWriter w = File.AppendText(path))
-            {
+            Debug.WriteLine(result);
+            StreamWriter w = File.AppendText(path);
+            
                 w.WriteLine(result);
-            }
-
+            
+            w.Close();
 
 
         }

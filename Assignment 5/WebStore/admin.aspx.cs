@@ -69,7 +69,7 @@ public partial class admin : System.Web.UI.Page
                     return;
                 holder.addPet(d);
                 break;
-            case 1:
+            case 2:
                 Cat c = new Cat(p);
                 if (breedBox.Text.Length != 0)
                     c.setBreed(breedBox.Text);
@@ -81,7 +81,7 @@ public partial class admin : System.Web.UI.Page
                     return;
                 holder.addPet(c);
                 break;
-            case 2:
+            case 1:
                 Bird b = new Bird(p);
                 if (typeBox.Text.Length != 0)
                     b.setType(typeBox.Text);

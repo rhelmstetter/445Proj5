@@ -17,7 +17,7 @@
         Add a new pet to be listed:<br />
         <br />
         Type
-        <asp:RadioButtonList ID="typeRadio" runat="server" Height="18px" RepeatDirection="Horizontal" Width="330px" ViewStateMode="Enabled">
+        <asp:RadioButtonList ID="typeRadio" runat="server" Height="18px" RepeatDirection="Horizontal" Width="330px">
             <asp:ListItem>Dog</asp:ListItem>
             <asp:ListItem>Bird</asp:ListItem>
             <asp:ListItem>Cat</asp:ListItem>
