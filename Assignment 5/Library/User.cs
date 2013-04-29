@@ -63,29 +63,35 @@ namespace Library
 
     public class UserDao
     {
-        private string path = "c:\\Users.txt";
+        private string path = "C:\\Users\\Rachel\\Desktop\\Users.txt";
 
-        public void addUser(User newUser)
+        public bool addUser(User newUser)
         {
-            
             // Load all users
             try
             {
                 string users = File.ReadAllText(path);
+
+                if (users.Contains(newUser.getUsername()))
+                {
+                    return false;
+                }
                 users = users + newUser.toString() + "\n";
 
                 //File.WriteAllText(users, @path);
 
-                System.IO.StreamWriter output = new System.IO.StreamWriter(@"C:\\Users.txt");
+                System.IO.StreamWriter output = new System.IO.StreamWriter(@"C:\Users\Rachel\Desktop\Users.txt");
                 output.WriteLine(users);
                 output.Close();
 
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.Message);
                 Debug.WriteLine(e.GetType());
+
             }
+
+            return true;
 
         }
 
@@ -102,12 +108,15 @@ namespace Library
 
             try
             {
-                if (password == proxy.Decrypt(user.getPassword()))
+                string decrypted = proxy.Decrypt(user.getPassword());
+
+                if (password == decrypted)
                 {
                     return user;
                 }
                 else 
                 {
+                    Debug.WriteLine("Password was incorrect");
                     return null;
                 }
             }
@@ -122,6 +131,7 @@ namespace Library
 
         public User getUser(string username)
         {
+            CryptoService.Service proxy = new CryptoService.Service();
 
             try
             {
@@ -132,7 +142,8 @@ namespace Library
                     string[] fields = users[i].Split(' ');
                     if (fields.Length == 3 && fields[1] == username)
                     {
-                        User user = new User(Convert.ToInt32(fields[0]), fields[1], fields[2]);
+                        string decrPass = proxy.Decrypt(fields[2]);
+                        User user = new User(Convert.ToInt32(fields[0]), fields[1], decrPass);
                         return user;
                     }
 
