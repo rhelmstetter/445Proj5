@@ -7,6 +7,8 @@
     <h3> On the purchase of your new feathery or furry friend!<br />
          You Bought:  <asp:Label ID="lblPetBough" runat="server" Text="Label"></asp:Label> </h3> <br />
 
+         You are a hero to your put! For good luck here is your thought of the day: <asp:Label ID="lblFortune" runat="server" Text="Label"></asp:Label>  <br />
+
 
 
 </asp:Content>
