@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Library;
 using System.Diagnostics;
+using System.Configuration;
 
 
 public partial class Account_Login : Page
@@ -25,6 +26,11 @@ public partial class Account_Login : Page
 
     protected void Unnamed6_Click(object sender, EventArgs e)
     {
+        string name = ConfigurationManager.AppSettings["ADMIN"];
+        string password = ConfigurationManager.AppSettings["ADMIN"];
+
+        
+
         UserDao dao = new UserDao();
 
         User admin = new User(1, "admin", "pass");

@@ -63,7 +63,7 @@ namespace Library
 
     public class UserDao
     {
-       
+        private string path = "c:\\Users.txt";
 
         public void addUser(User newUser)
         {
@@ -75,13 +75,19 @@ namespace Library
             {
                 string users = File.ReadAllText(path);
                 users = users + newUser.toString() + "\n";
-                File.WriteAllText(users, "@" + path);
+
+                //File.WriteAllText(users, @path);
+
+                System.IO.StreamWriter output = new System.IO.StreamWriter(@"C:/Users/Andrew/Desktop/new_cse445/445Proj5/Assignment 5/WebStore/users.txt");
+                output.WriteLine(users);
+                output.Close();
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
                 Debug.WriteLine(e.GetType());
             }
+
         }
 
         public User loginUser(string username, string password)
@@ -97,6 +103,10 @@ namespace Library
 
             try
             {
+                string pword = user.getPassword();
+                string whatItIs = proxy.Decrypt(pword);
+                whatItIs = proxy.Decrypt(whatItIs);
+
                 if (password == proxy.Decrypt(user.getPassword()))
                 {
                     return user;
